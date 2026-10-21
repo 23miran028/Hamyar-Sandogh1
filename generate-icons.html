@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابزار ارتقای آیکون‌های صندوق</title>
+    <style>
+        body { font-family: 'Vazirmatn', Tahoma, sans-serif; background: #0f172a; color: #fff; padding: 30px; display: flex; justify-content: center; }
+        .container { max-width: 800px; width: 100%; }
+        h1 { text-align: center; color: #60a5fa; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #94a3b8; margin-bottom: 30px; font-size: 14px; }
+        
+        .icon-preview { width: 200px; height: 200px; margin: 0 auto 30px; border-radius: 46px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); border: 2px solid rgba(255,255,255,0.1); overflow: hidden; }
+        .icon-preview svg { width: 100%; height: 100%; }
+        
+        .btn-download { display: block; width: 100%; max-width: 400px; margin: 0 auto 40px; background: linear-gradient(135deg, #3b5ff5, #2a45e0); color: #fff; border: none; padding: 16px; font-size: 18px; border-radius: 12px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(59, 95, 245, 0.4); transition: all 0.2s; }
+        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 95, 245, 0.6); }
+        .btn-download:active { transform: translateY(0); }
+        
+        .success-msg { display: none; text-align: center; color: #4ade80; font-weight: bold; margin-bottom: 20px; background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 8px; border: 1px solid #4ade80; }
+        
+        .step-box { background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #334155; }
+        .step-box h3 { margin-top: 0; color: #fbbf24; display: flex; align-items: center; gap: 8px; font-size: 16px; }
+        .step-box p { color: #cbd5e1; font-size: 14px; margin-bottom: 10px; }
+        pre { background: #0f172a; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; overflow-x: auto; font-family: monospace; color: #a78bfa; font-size: 13px; border: 1px solid #334155; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ابزار ارتقای آیکون‌های برنامه</h1>
+        <p class="subtitle">طراحی جدید صندوقچه و قفل طلایی</p>
+
+        <div class="icon-preview" id="previewBox"></div>
+        
+        <button class="btn-download" id="btnGenerate" onclick="generateAllIcons()">
+            📥 تولید و دانلود تمام آیکون‌ها
+        </button>
+        
+        <div class="success-msg" id="successMsg">
+            ✅ دانلودها آغاز شد! فایل‌های دانلود شده را در پوشه <code>assets/icons/</code> پروژه خود قرار دهید.
+        </div>
+
+        <!-- راهنماها -->
+        <div class="step-box">
+            <h3>۱. فایل‌های دانلود شده</h3>
+            <p>پس از کلیک روی دکمه بالا، این فایل‌ها دانلود می‌شوند. آن‌ها را به پوشه <code>assets/icons/</code> منتقل کنید:</p>
+            <ul style="color:#cbd5e1; font-size:14px; line-height:1.8;">
+                <li><code>icon-192.png</code></li>
+                <li><code>icon-512.png</code></li>
+                <li><code>apple-touch-icon.png</code> (برای آیفون)</li>
+                <li><code>favicon.png</code> (برای تب مرورگر)</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <h3>۲. کدهای جدید برای <code>index.html</code></h3>
+            <p>تگ‌های آیکون قدیمی را پیدا کرده و با کدهای زیر جایگزین کنید:</p>
+            <pre>
+&lt;!-- آیکون‌های جدید --&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png"&gt;</pre>
+        </div>
+
+        <div class="step-box">
+            <h3>۳. کدهای جدید برای <code>manifest.webmanifest</code></h3>
+            <p>بخش <code>icons</code> را در فایل manifest با کدهای زیر جایگزین کنید:</p>
+            <pre>
+"icons": [
+  {
+    "src": "assets/icons/icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png",
+    "purpose": "any maskable"
+  },
+  {
+    "src": "assets/icons/icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }
+]</pre>
+        </div>
+
+        <div class="step-box">
+            <h3>۴. کدهای جدید برای <code>sw.js</code> (Service Worker)</h3>
+            <p>در آرایه <code>STATIC_ASSETS</code> در بالای فایل، مسیرهای جدید را جایگزین مسیرهای قدیمی کنید:</p>
+            <pre>
+'./assets/icons/favicon.png',
+'./assets/icons/apple-touch-icon.png',
+'./assets/icons/icon-192.png',
+'./assets/icons/icon-512.png',</pre>
+        </div>
+    </div>
+
+    <script>
+        // کدهای وکتور (SVG) طراحی شده برای صندوقچه (دقیقاً مشابه تصویر)
+        const svgCode = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <defs>
+                <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4f46e5"/>
+                    <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+                <linearGradient id="wood" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#b45309"/>
+                    <stop offset="100%" stop-color="#78350f"/>
+                </linearGradient>
+                <linearGradient id="gold" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#fef08a"/>
+                    <stop offset="100%" stop-color="#eab308"/>
+                </linearGradient>
+            </defs>
+            
+            <!-- پس‌زمینه گرادیانت -->
+            <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+            
+            <!-- هاله نور پشت صندوق -->
+            <circle cx="256" cy="280" r="160" fill="#fef08a" opacity="0.15"/>
+
+            <!-- ستاره‌های درخشان -->
+            <path d="M 400 120 L 408 140 L 428 148 L 408 156 L 400 176 L 392 156 L 372 148 L 392 140 Z" fill="#fef08a" opacity="0.9"/>
+            <path d="M 100 400 L 105 410 L 115 415 L 105 420 L 100 430 L 95 420 L 85 415 L 95 410 Z" fill="#fef08a" opacity="0.7"/>
+
+            <!-- سکه‌های طلایی شناور -->
+            <circle cx="180" cy="160" r="28" fill="url(#gold)" stroke="#b45309" stroke-width="5"/>
+            <circle cx="256" cy="130" r="34" fill="url(#gold)" stroke="#b45309" stroke-width="5"/>
+            <circle cx="332" cy="160" r="28" fill="url(#gold)" stroke="#b45309" stroke-width="5"/>
+
+            <!-- بدنه صندوق -->
+            <rect x="120" y="220" width="272" height="160" rx="16" fill="url(#wood)"/>
+            
+            <!-- درپوش صندوق -->
+            <path d="M 120 220 Q 120 160 256 160 Q 392 160 392 220 Z" fill="url(#wood)"/>
+            
+            <!-- خطوط چوبی -->
+            <line x1="160" y1="220" x2="160" y2="380" stroke="#451a03" stroke-width="5" opacity="0.4"/>
+            <line x1="256" y1="220" x2="256" y2="380" stroke="#451a03" stroke-width="5" opacity="0.4"/>
+            <line x1="352" y1="220" x2="352" y2="380" stroke="#451a03" stroke-width="5" opacity="0.4"/>
+
+            <!-- نوارهای طلایی دور صندوق -->
+            <rect x="110" y="210" width="292" height="24" rx="12" fill="url(#gold)" stroke="#854d0e" stroke-width="3"/>
+            <rect x="110" y="300" width="292" height="24" rx="12" fill="url(#gold)" stroke="#854d0e" stroke-width="3"/>
+            <rect x="236" y="210" width="40" height="170" fill="url(#gold)" stroke="#854d0e" stroke-width="3"/>
+
+            <!-- قفل طلایی -->
+            <rect x="210" y="240" width="92" height="80" rx="16" fill="url(#gold)" stroke="#854d0e" stroke-width="6"/>
+            
+            <!-- قوس قفل -->
+            <path d="M 230 240 L 230 210 Q 230 170 256 170 Q 282 170 282 210 L 282 240" fill="none" stroke="#fbbf24" stroke-width="18" stroke-linecap="round"/>
+            <path d="M 230 240 L 230 210 Q 230 170 256 170 Q 282 170 282 210 L 282 240" fill="none" stroke="#854d0e" stroke-width="6" stroke-linecap="round" />
+
+            <!-- سوراخ کلید -->
+            <circle cx="256" cy="275" r="10" fill="#451a03"/>
+            <rect x="250" y="275" width="12" height="20" rx="4" fill="#451a03"/>
+        </svg>`;
+
+        // نمایش پیش‌نمایش
+        document.getElementById('previewBox').innerHTML = svgCode;
+
+        // تابع تولید و دانلود تصاویر
+        function generateAllIcons() {
+            const btn = document.getElementById('btnGenerate');
+            btn.disabled = true;
+            btn.textContent = '⏳ در حال تولید تصاویر...';
+
+            const sizes = [
+                { name: 'icon-192.png', size: 192 },
+                { name: 'icon-512.png', size: 512 },
+                { name: 'apple-touch-icon.png', size: 180 },
+                { name: 'favicon.png', size: 32 }
+            ];
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            // تبدیل کد SVG به یک URL قابل خواندن برای مرورگر
+            const svgBlob = new Blob([svgCode], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+            
+            img.onload = () => {
+                sizes.forEach((item, index) => {
+                    // تنظیم ابعاد بوم (Canvas)
+                    canvas.width = item.size;
+                    canvas.height = item.size;
+                    ctx.clearRect(0, 0, item.size, item.size);
+                    
+                    // کشیدن تصویر روی بوم
+                    ctx.drawImage(img, 0, 0, item.size, item.size);
+                    
+                    // ایجاد تاخیر کوچک بین دانلودها تا مرورگر بلاک نکند
+                    setTimeout(() => {
+                        const a = document.createElement('a');
+                        a.href = canvas.toDataURL('image/png');
+                        a.download = item.name;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    }, index * 400); 
+                });
+                
+                // آزادسازی حافظه
+                setTimeout(() => {
+                    URL.revokeObjectURL(url);
+                    btn.disabled = false;
+                    btn.textContent = '📥 تولید مجدد آیکون‌ها';
+                    document.getElementById('successMsg').style.display = 'block';
+                }, sizes.length * 400);
+            };
+            img.src = url;
+        }
+    </script>
+</body>
+</html>

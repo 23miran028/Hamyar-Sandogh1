@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="45%" stop-color="#3b5ff5"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+
+    <radialGradient id="hl" cx="30%" cy="22%" r="80%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="woodBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="30%" stop-color="#854d0e"/>
+      <stop offset="100%" stop-color="#57340a"/>
+    </linearGradient>
+
+    <linearGradient id="woodLid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ca8a04"/>
+      <stop offset="60%" stop-color="#a16207"/>
+      <stop offset="100%" stop-color="#854d0e"/>
+    </linearGradient>
+
+    <linearGradient id="metalBand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <linearGradient id="lockGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="40%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="192" height="192" rx="42" fill="url(#bgGrad)"/>
+  <rect width="192" height="192" rx="42" fill="url(#hl)"/>
+
+  <!-- درخشش سکه‌ها -->
+  <ellipse cx="96" cy="70" rx="50" ry="25" fill="url(#glow)"/>
+
+  <!-- سکه‌های کوچک پشت صندوق -->
+  <g opacity="0.85">
+    <circle cx="68" cy="68" r="7" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
+    <circle cx="124" cy="64" r="7" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
+    <circle cx="96" cy="56" r="8" fill="#fcd34d" stroke="#d97706" stroke-width="1"/>
+  </g>
+
+  <!-- درپوش -->
+  <path d="M 50 92 Q 50 76 66 72 L 126 72 Q 142 76 142 92 L 142 98 L 50 98 Z"
+        fill="url(#woodLid)"/>
+  <rect x="48" y="89" width="96" height="4" rx="1.5" fill="url(#metalBand)"/>
+
+  <!-- بدنه -->
+  <rect x="54" y="98" width="84" height="48" rx="2.5" fill="url(#woodBody)"/>
+
+  <!-- بافت چوب -->
+  <g opacity="0.15" stroke="#3f2410" stroke-width="0.8" fill="none">
+    <line x1="70" y1="102" x2="70" y2="144"/>
+    <line x1="88" y1="101" x2="88" y2="145"/>
+    <line x1="106" y1="101" x2="106" y2="145"/>
+    <line x1="124" y1="102" x2="124" y2="144"/>
+  </g>
+
+  <!-- بند فلزی افقی -->
+  <rect x="54" y="125" width="84" height="4.5" fill="url(#metalBand)"/>
+
+  <!-- بند عمودی -->
+  <rect x="91" y="96" width="8" height="52" fill="url(#metalBand)" opacity="0.9"/>
+
+  <!-- قفل طلایی -->
+  <rect x="84" y="90" width="22" height="22" rx="4" fill="url(#lockGold)"
+        stroke="#78350f" stroke-width="1.2"/>
+  <circle cx="95" cy="99" r="2.8" fill="#78350f"/>
+  <path d="M 93.5 101 L 93.5 106 L 96.5 106 L 96.5 101 Z" fill="#78350f"/>
+
+  <!-- قوس قفل -->
+  <path d="M 88 90 L 88 84 Q 88 76 95 76 Q 102 76 102 84 L 102 90"
+        fill="none" stroke="url(#metalBand)" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- جرقه‌ها -->
+  <g fill="#fde68a">
+    <path d="M 152 40 L 154 46 L 160 48 L 154 50 L 152 56 L 150 50 L 144 48 L 150 46 Z" opacity="0.9"/>
+    <path d="M 40 148 L 42 152 L 46 154 L 42 156 L 40 160 L 38 156 L 34 154 L 38 152 Z" opacity="0.75"/>
+  </g>
+</svg>

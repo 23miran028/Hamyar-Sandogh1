@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="50%" stop-color="#3b5ff5"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="coinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dbe6ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- پس‌زمینه کامل (بدون گردی — Android خودش گرد می‌کند) -->
+  <rect width="512" height="512" fill="url(#bgGrad)"/>
+
+  <!-- محتوا در Safe Zone (۸۰٪ مرکز) -->
+  <g>
+    <circle cx="256" cy="256" r="110" fill="#ffffff" opacity="0.15"/>
+    <circle cx="256" cy="256" r="90" fill="url(#coinGrad)"/>
+    <circle cx="256" cy="256" r="74" fill="none"
+            stroke="#3b5ff5" stroke-width="2.5" opacity="0.35"/>
+    <text x="256" y="318"
+          font-family="'Vazirmatn', Tahoma, Arial, sans-serif"
+          font-size="140"
+          font-weight="900"
+          text-anchor="middle"
+          fill="#3b5ff5">ق</text>
+  </g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="45%" stop-color="#3b5ff5"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+
+    <linearGradient id="woodBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="30%" stop-color="#854d0e"/>
+      <stop offset="100%" stop-color="#57340a"/>
+    </linearGradient>
+
+    <linearGradient id="woodLid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ca8a04"/>
+      <stop offset="60%" stop-color="#a16207"/>
+      <stop offset="100%" stop-color="#854d0e"/>
+    </linearGradient>
+
+    <linearGradient id="metalBand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <linearGradient id="lockGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="40%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bgGrad)"/>
+
+  <!-- محتوا در Safe Zone -->
+  <g transform="translate(256 256) scale(0.78) translate(-256 -256)">
+
+    <!-- درخشش -->
+    <ellipse cx="256" cy="185" rx="130" ry="70" fill="url(#glow)"/>
+
+    <!-- سکه‌ها -->
+    <g opacity="0.85">
+      <circle cx="180" cy="180" r="18" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+      <circle cx="332" cy="172" r="18" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+      <circle cx="256" cy="155" r="20" fill="#fcd34d" stroke="#d97706" stroke-width="2"/>
+      <circle cx="210" cy="145" r="12" fill="#fcd34d" stroke="#d97706" stroke-width="1.5" opacity="0.8"/>
+      <circle cx="300" cy="140" r="12" fill="#fcd34d" stroke="#d97706" stroke-width="1.5" opacity="0.8"/>
+    </g>
+
+    <!-- درپوش -->
+    <path d="M 130 245 Q 130 200 175 190 L 337 190 Q 382 200 382 245 L 382 260 L 130 260 Z"
+          fill="url(#woodLid)"/>
+    <path d="M 175 190 L 337 190 Q 358 190 372 200 L 372 205 Q 358 196 337 196
+             L 175 196 Q 154 196 140 205 L 140 200 Q 154 190 175 190 Z"
+          fill="#eab308" opacity="0.7"/>
+
+    <!-- بند فلزی بالا -->
+    <rect x="128" y="240" width="256" height="10" rx="3" fill="url(#metalBand)"/>
+    <rect x="128" y="240" width="256" height="3" rx="1.5" fill="#fef3c7" opacity="0.6"/>
+
+    <!-- بدنه -->
+    <rect x="140" y="260" width="232" height="130" rx="6" fill="url(#woodBody)"/>
+
+    <!-- بافت چوب -->
+    <g opacity="0.15" stroke="#3f2410" stroke-width="1.5" fill="none">
+      <line x1="180" y1="270" x2="180" y2="382"/>
+      <line x1="220" y1="268" x2="220" y2="384"/>
+      <line x1="260" y1="267" x2="260" y2="385"/>
+      <line x1="300" y1="268" x2="300" y2="384"/>
+      <line x1="340" y1="270" x2="340" y2="382"/>
+    </g>
+
+    <!-- بند فلزی میانی -->
+    <rect x="140" y="335" width="232" height="12" fill="url(#metalBand)"/>
+    <rect x="140" y="335" width="232" height="4" fill="#fef3c7" opacity="0.5"/>
+
+    <!-- بند عمودی -->
+    <rect x="246" y="255" width="20" height="140" fill="url(#metalBand)" opacity="0.9"/>
+    <rect x="246" y="255" width="6" height="140" fill="#fef3c7" opacity="0.4"/>
+
+    <!-- میخ‌ها -->
+    <g fill="#78350f" opacity="0.5">
+      <circle cx="155" cy="272" r="2.5"/>
+      <circle cx="155" cy="295" r="2.5"/>
+      <circle cx="155" cy="372" r="2.5"/>
+      <circle cx="357" cy="272" r="2.5"/>
+      <circle cx="357" cy="295" r="2.5"/>
+      <circle cx="357" cy="372" r="2.5"/>
+    </g>
+
+    <!-- قفل طلایی -->
+    <rect x="228" y="248" width="56" height="56" rx="10" fill="url(#lockGold)"
+          stroke="#78350f" stroke-width="2.5"/>
+    <rect x="234" y="254" width="44" height="16" rx="6" fill="#fef3c7" opacity="0.55"/>
+    <circle cx="256" cy="272" r="7" fill="#78350f"/>
+    <path d="M 253 276 L 253 290 L 259 290 L 259 276 Z" fill="#78350f"/>
+    <path d="M 240 248 L 240 235 Q 240 215 256 215 Q 272 215 272 235 L 272 248"
+          fill="none" stroke="url(#metalBand)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 243 235 Q 243 220 256 220 Q 269 220 269 235"
+          fill="none" stroke="#fef3c7" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- جرقه‌ها -->
+    <path d="M 405 105 L 409 118 L 422 122 L 409 126 L 405 139 L 401 126 L 388 122 L 401 118 Z"
+          fill="#fde68a" opacity="0.95"/>
+    <path d="M 100 395 L 103 403 L 111 406 L 103 409 L 100 417 L 97 409 L 89 406 L 97 403 Z"
+          fill="#fde68a" opacity="0.8"/>
+  </g>
+</svg>

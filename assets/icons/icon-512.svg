@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- پس‌زمینه -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="45%" stop-color="#3b5ff5"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+
+    <radialGradient id="hl" cx="30%" cy="22%" r="80%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- چوب -->
+    <linearGradient id="woodBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="30%" stop-color="#854d0e"/>
+      <stop offset="100%" stop-color="#57340a"/>
+    </linearGradient>
+
+    <linearGradient id="woodLid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ca8a04"/>
+      <stop offset="60%" stop-color="#a16207"/>
+      <stop offset="100%" stop-color="#854d0e"/>
+    </linearGradient>
+
+    <linearGradient id="woodTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+
+    <!-- فلز -->
+    <linearGradient id="metalBand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <linearGradient id="lockGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="40%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <!-- سایه -->
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dy="8" result="off"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- درخشش سکه‌ها -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- پس‌زمینه -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  <rect width="512" height="512" rx="112" fill="url(#hl)"/>
+
+  <!-- حلقه‌های محو -->
+  <g opacity="0.05" fill="none" stroke="#ffffff" stroke-width="1.5">
+    <circle cx="256" cy="256" r="220"/>
+    <circle cx="256" cy="256" r="195"/>
+  </g>
+
+  <!-- درخشش سکه‌ها پشت صندوق -->
+  <ellipse cx="256" cy="185" rx="130" ry="70" fill="url(#glow)"/>
+
+  <!-- سکه‌های درخشنده پشت سر صندوق -->
+  <g opacity="0.85">
+    <circle cx="180" cy="180" r="18" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+    <circle cx="332" cy="172" r="18" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+    <circle cx="256" cy="155" r="20" fill="#fcd34d" stroke="#d97706" stroke-width="2"/>
+    <circle cx="210" cy="145" r="12" fill="#fcd34d" stroke="#d97706" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="300" cy="140" r="12" fill="#fcd34d" stroke="#d97706" stroke-width="1.5" opacity="0.8"/>
+  </g>
+
+  <!-- ============ صندوق ============ -->
+  <g filter="url(#softShadow)">
+
+    <!-- درپوش چوبی (بالا) -->
+    <path d="
+      M 130 245
+      Q 130 200 175 190
+      L 337 190
+      Q 382 200 382 245
+      L 382 260
+      L 130 260 Z"
+      fill="url(#woodLid)"/>
+
+    <!-- لبه‌ی بالای درپوش (هایلایت) -->
+    <path d="
+      M 175 190
+      L 337 190
+      Q 358 190 372 200
+      L 372 205
+      Q 358 196 337 196
+      L 175 196
+      Q 154 196 140 205
+      L 140 200
+      Q 154 190 175 190 Z"
+      fill="url(#woodTop)" opacity="0.7"/>
+
+    <!-- بند فلزی بالای درپوش (افقی) -->
+    <rect x="128" y="240" width="256" height="10" rx="3" fill="url(#metalBand)"/>
+    <rect x="128" y="240" width="256" height="3" rx="1.5" fill="#fef3c7" opacity="0.6"/>
+
+    <!-- بدنه‌ی صندوق -->
+    <rect x="140" y="260" width="232" height="130" rx="6" fill="url(#woodBody)"/>
+
+    <!-- بافت چوب (خطوط عمودی محو) -->
+    <g opacity="0.15" stroke="#3f2410" stroke-width="1.5" fill="none">
+      <line x1="180" y1="270" x2="180" y2="382"/>
+      <line x1="220" y1="268" x2="220" y2="384"/>
+      <line x1="260" y1="267" x2="260" y2="385"/>
+      <line x1="300" y1="268" x2="300" y2="384"/>
+      <line x1="340" y1="270" x2="340" y2="382"/>
+    </g>
+
+    <!-- بند فلزی میانی (افقی) -->
+    <rect x="140" y="335" width="232" height="12" fill="url(#metalBand)"/>
+    <rect x="140" y="335" width="232" height="4" fill="#fef3c7" opacity="0.5"/>
+    <rect x="140" y="343" width="232" height="2" fill="#78350f" opacity="0.3"/>
+
+    <!-- بند فلزی عمودی وسط -->
+    <rect x="246" y="255" width="20" height="140" fill="url(#metalBand)" opacity="0.9"/>
+    <rect x="246" y="255" width="6" height="140" fill="#fef3c7" opacity="0.4"/>
+
+    <!-- میخ‌های تزئینی فلزی روی بدنه -->
+    <g fill="#78350f" opacity="0.5">
+      <circle cx="155" cy="272" r="2.5"/>
+      <circle cx="155" cy="295" r="2.5"/>
+      <circle cx="155" cy="372" r="2.5"/>
+      <circle cx="357" cy="272" r="2.5"/>
+      <circle cx="357" cy="295" r="2.5"/>
+      <circle cx="357" cy="372" r="2.5"/>
+    </g>
+  </g>
+
+  <!-- ============ قفل طلایی (مرکز) ============ -->
+  <g filter="url(#softShadow)">
+
+    <!-- بدنه‌ی قفل -->
+    <rect x="228" y="248" width="56" height="56" rx="10" fill="url(#lockGold)"
+          stroke="#78350f" stroke-width="2.5"/>
+
+    <!-- هایلایت روی قفل -->
+    <rect x="234" y="254" width="44" height="16" rx="6" fill="#fef3c7" opacity="0.55"/>
+
+    <!-- سوراخ کلید -->
+    <circle cx="256" cy="272" r="7" fill="#78350f"/>
+    <path d="M 253 276 L 253 290 L 259 290 L 259 276 Z" fill="#78350f"/>
+
+    <!-- قوس قفل -->
+    <path d="
+      M 240 248
+      L 240 235
+      Q 240 215 256 215
+      Q 272 215 272 235
+      L 272 248"
+      fill="none" stroke="url(#metalBand)" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- هایلایت قوس -->
+    <path d="
+      M 243 235
+      Q 243 220 256 220
+      Q 269 220 269 235"
+      fill="none" stroke="#fef3c7" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- ============ جرقه‌ها ============ -->
+  <g fill="#fde68a">
+    <path d="M 405 105 L 409 118 L 422 122 L 409 126 L 405 139 L 401 126 L 388 122 L 401 118 Z"
+          opacity="0.95"/>
+    <path d="M 100 395 L 103 403 L 111 406 L 103 409 L 100 417 L 97 409 L 89 406 L 97 403 Z"
+          opacity="0.8"/>
+    <path d="M 405 395 L 408 402 L 415 405 L 408 408 L 405 415 L 402 408 L 395 405 L 402 402 Z"
+          opacity="0.7"/>
+  </g>
+</svg>

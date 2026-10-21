@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سامانه صندوق قرض‌الحسنه</title>
+<meta name="description" content="سامانه مدیریت صندوق قرض‌الحسنه — کاملاً آفلاین">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="صندوق">
+<meta name="theme-color" content="#3b5ff5">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+
+<div class="app-shell" id="appShell">
+
+  <!-- ============ Sidebar ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="28" height="28">
+    <defs>
+      <linearGradient id="sbWood" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#ca8a04"/>
+        <stop offset="100%" stop-color="#854d0e"/>
+      </linearGradient>
+      <linearGradient id="sbGold" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#fde68a"/>
+        <stop offset="100%" stop-color="#d97706"/>
+      </linearGradient>
+    </defs>
+    <path d="M 12 26 Q 12 20 20 19 L 44 19 Q 52 20 52 26 L 52 28 L 12 28 Z" fill="url(#sbWood)"/>
+    <rect x="11" y="26" width="42" height="2.5" rx="1" fill="#fbbf24"/>
+    <rect x="13" y="29" width="38" height="24" rx="2" fill="url(#sbWood)"/>
+    <rect x="13" y="42" width="38" height="2.5" fill="#fbbf24"/>
+    <rect x="30" y="28" width="4" height="26" fill="#fbbf24" opacity="0.9"/>
+    <rect x="27" y="24" width="10" height="11" rx="2" fill="url(#sbGold)" stroke="#78350f" stroke-width="0.7"/>
+    <circle cx="32" cy="29" r="1.3" fill="#78350f"/>
+    <path d="M 31 31 L 31 33.5 L 33 33.5 L 33 31 Z" fill="#78350f"/>
+    <path d="M 29 24 L 29 22 Q 29 19 32 19 Q 35 19 35 22 L 35 24" fill="none" stroke="#fbbf24" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>
+</div>
+      <div>
+        <h1>صندوق قرض‌الحسنه</h1>
+        <p id="brandSub">در انتظار بارگذاری</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebarInner"></nav>
+    <div class="sidebar-footer">
+      <span>نسخه آفلاین</span>
+      <span class="dot-sep">•</span>
+      <span id="sidebarUser">—</span>
+    </div>
+  </aside>
+
+  <!-- Backdrop موبایل -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ Main ============ -->
+  <div class="app-main">
+
+    <header class="topbar">
+      <div class="topbar-inner">
+
+        <!-- دکمه منو (موبایل) -->
+        <button class="icon-btn menu-btn" id="menuBtn" title="منو">
+          <span class="hamburger"></span>
+        </button>
+
+        <!-- جستجوی سراسری -->
+        <div class="global-search" id="globalSearchWrap">
+          <input type="search" id="globalSearch" placeholder="جستجوی اعضا، وام‌ها، دوره‌ها…" autocomplete="off">
+          <div class="global-search-results" id="globalSearchResults"></div>
+        </div>
+
+        <span class="spacer"></span>
+
+        <!-- دکمه‌ها -->
+        <button class="icon-btn" id="btnLoad" title="بارگذاری فایل داده">📂</button>
+        <button class="icon-btn bell-btn" id="btnBell" title="یادآورها" style="display:none">
+          <span class="bell-icon">🔔</span>
+          <span class="bell-badge" id="bellBadge"></span>
+        </button>
+        <button class="icon-btn" id="btnPrint" title="چاپ">🖨️</button>
+        <button class="icon-btn" id="btnTheme" title="تغییر پوسته">🌗</button>
+
+        <!-- منوی کاربر -->
+        <div class="user-menu" id="userMenu" style="display:none">
+          <button class="user-btn" id="btnUser">
+            <span class="user-avatar" id="userAvatar">—</span>
+            <span class="user-name" id="userLabel">—</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <a href="#" data-action="change-password">🔑 تغییر رمز عبور</a>
+            <a href="#" data-action="settings">⚙️ تنظیمات</a>
+            <div class="dropdown-divider"></div>
+            <a href="#" data-action="logout" style="color:var(--danger-600)">🚪 خروج از سامانه</a>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="view-container" id="view"></main>
+
+    <footer>
+      سامانه صندوق قرض‌الحسنه • کاملاً آفلاین • داده‌ها فقط روی همین دستگاه ذخیره می‌شوند
+    </footer>
+
+  </div>
+
+</div>
+
+<input type="file" id="fileInput" accept=".json,application/json" hidden>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============ اسکریپت‌ها ============ -->
+
+<!-- هسته -->
+<script src="js/core/errors.js"></script>
+<script src="js/core/event-bus.js"></script>
+<script src="js/core/jalali.js"></script>
+<script src="js/utils.js"></script>
+
+<!-- دامنه -->
+<script src="js/domain/models.js"></script>
+<script src="js/domain/validators.js"></script>
+<script src="js/domain/loan.engine.js"></script>
+
+<!-- زیرساخت -->
+<script src="js/infra/db.js"></script>
+<script src="js/infra/repo.js"></script>
+<script src="js/infra/crypto.js"></script>
+
+<!-- تجزیه‌گر -->
+<script src="js/parser.js"></script>
+
+<!-- سرویس‌ها -->
+<script src="js/services/data.service.js"></script>
+<script src="js/services/auth.service.js"></script>
+<script src="js/services/member.service.js"></script>
+<script src="js/services/edit.service.js"></script>
+<script src="js/services/txn.service.js"></script>
+<script src="js/services/loan.service.js"></script>
+<script src="js/services/period.service.js"></script>
+<script src="js/views/settings-global.js"></script>
+<script src="js/views/audit-log.js"></script>
+<script src="js/views/loan-edit.js"></script>
+<script src="js/services/yearly.service.js"></script>
+<script src="js/services/forecast.service.js"></script>
+<script src="js/services/report.service.js"></script>
+<script src="js/services/backup.service.js"></script>
+<script src="js/services/notify.service.js"></script>
+
+<!-- وضعیت -->
+<script src="js/state.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/ui.js"></script>
+
+
+<!-- نماها -->
+<script src="js/views/dashboard.js"></script>
+<script src="js/views/members.js"></script>
+<script src="js/views/member-detail.js"></script>
+<script src="js/views/loans.js"></script>
+<script src="js/views/monthly.js"></script>
+<script src="js/views/yearly.js"></script>
+<script src="js/views/data.js"></script>
+<script src="js/views/login.js"></script>
+<script src="js/views/settings.js"></script>
+<script src="js/views/member-edit.js"></script>
+<script src="js/views/txn-edit.js"></script>
+<script src="js/views/loan-new.js"></script>
+<script src="js/views/loan-detail.js"></script>
+<script src="js/views/forecast.js"></script>
+<script src="js/views/period-manage.js"></script>
+<script src="js/views/reports.js"></script>
+<script src="js/views/report-viewer.js"></script>
+<script src="js/views/reminders.js"></script>
+<script src="js/views/backup.js"></script>
+
+<!-- راه‌انداز -->
+<script src="js/services/pwa.service.js"></script>
+<script src="js/app.js"></script>
+<script src="hotfix.js"></script>
+<script src="icons-upgrade.js"></script>
+<script src="toman-inputs-fix.js"></script>
+<script src="phase1-ux.js"></script>
+<script src="phase2-features.js"></script>
+<script src="phase3-security.js"></script>
+<script src="phase4-performance.js"></script>
+
+</body>
+</html>
